@@ -1,6 +1,6 @@
 package com.joker.service.impl;
 
-import com.joker.dao.CommentDao;
+import com.joker.dao.CommentMapper;
 import com.joker.entity.Comment;
 import com.joker.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,34 +12,34 @@ import java.util.ArrayList;
 public class CommentServiceImpl implements CommentService {
 
     @Autowired
-    private CommentDao commentDao;
+    private CommentMapper commentMapper;
 
     @Override
     public ArrayList<Comment> showAllcomment() {
-        return commentDao.showAllcommentPro();
+        return commentMapper.showAllcommentPro();
     }
 
     @Override
     public int deleteComment(Integer commentId) {
-        Comment c= commentDao.getPost(commentId);
+        Comment c= commentMapper.getPost(commentId);
         if(c != null){
-        commentDao.updatePostommons(c.getCommentPostid());
+        commentMapper.updatePostommons(c.getCommentPostid());
         }
-        return commentDao.deleteCommentPro(commentId);
+        return commentMapper.deleteCommentPro(commentId);
     }
 
     @Override
     public ArrayList<Comment> showComment(Integer commentUserid) {
-        return commentDao.showCommentPro(commentUserid);
+        return commentMapper.showCommentPro(commentUserid);
     }
 
     @Override
     public int insertComment(String commentPostname, String commentUserimg,
                              String commentContent, Integer commentUserid, Integer commentPostid) {
-        int bol = commentDao.insertCommentPro(commentPostname,commentUserimg,
+        int bol = commentMapper.insertCommentPro(commentPostname,commentUserimg,
                 commentContent,commentUserid,commentPostid);
         if(bol!=0) {
-            commentDao.updateCommonsPro(commentPostid);
+            commentMapper.updateCommonsPro(commentPostid);
             return bol;
         }else {
             return bol;
@@ -48,6 +48,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public ArrayList<Comment> showLike(String commentPostname) {
-        return commentDao.showLikePro(commentPostname);
+        return commentMapper.showLikePro(commentPostname);
     }
 }

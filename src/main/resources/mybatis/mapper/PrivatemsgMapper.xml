@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.joker.dao.PrivatemsgDao">
+<mapper namespace="com.joker.dao.PrivatemsgMapper">
     <insert id="SendPro">
         insert into privatemsg (privatemsg_sendid, privatemsg_sendname, privatemsg_acceptid, privatemsg_acceptname, privatemsg_content)
         values (#{privatemsgSendid},#{privatemsgSendname},#{privatemsgAcceptid},#{privatemsgAcceptname},#{privatemsgContent})

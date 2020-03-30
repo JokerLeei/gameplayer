@@ -1,7 +1,7 @@
 package com.joker.service.impl;
 
-import com.joker.dao.GameDao;
-import com.joker.dao.OrderDao;
+import com.joker.dao.GameMapper;
+import com.joker.dao.OrderMapper;
 import com.joker.entity.Order;
 import com.joker.entity.OrderAndUser;
 import com.joker.service.OrderService;
@@ -17,39 +17,39 @@ import java.util.Date;
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
-    OrderDao orderDao;
+    OrderMapper orderMapper;
 
     @Autowired
-    GameDao gameDao;
+    GameMapper gameMapper;
 
     @Override
     public ArrayList<OrderAndUser> showOrder(Integer orderUserid) {
-        return orderDao.showOrderPro(orderUserid);
+        return orderMapper.showOrderPro(orderUserid);
     }
 
     @Override
     public int deleteOrder(Integer orderId) {
-        return orderDao.deleteOrderPro(orderId);
+        return orderMapper.deleteOrderPro(orderId);
     }
 
     @Override
     public ArrayList<OrderAndUser> orderNorepeat(Integer orderUserid) {
-        return orderDao.orderNorepeatPro(orderUserid);
+        return orderMapper.orderNorepeatPro(orderUserid);
     }
 
     @Override
     public ArrayList<Order> showAllorder() {
-        return orderDao.showAllorderPro();
+        return orderMapper.showAllorderPro();
     }
 
     @Override
     public ArrayList<Order> showLike(String orderName) {
-        return orderDao.showLikePro(orderName);
+        return orderMapper.showLikePro(orderName);
     }
 
     @Override
     public void updateBol(Integer gameid,Integer userid) {
-        orderDao.updateBolPro(gameid,userid);
+        orderMapper.updateBolPro(gameid,userid);
     }
 
     @Override
@@ -59,16 +59,16 @@ public class OrderServiceImpl implements OrderService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("订单创建时间：" + dateFormat.format(date));
         String orderTime =  dateFormat.format(date);
-        return orderDao.insertOrderPro(cartName,cartPrice,orderTime,cartGameid,cartUserid);
+        return orderMapper.insertOrderPro(cartName,cartPrice,orderTime,cartGameid,cartUserid);
     }
 
     @Override
     public void deleteOrderTwo(Integer gameId, Integer userId) {
-        orderDao.deleteOrderTwoPro(gameId,userId);
+        orderMapper.deleteOrderTwoPro(gameId,userId);
     }
 
     @Override
     public Order showBuyStatus(Integer orderGameid, Integer orderUserid) {
-        return orderDao.showBuyStatusPro(orderGameid,orderUserid);
+        return orderMapper.showBuyStatusPro(orderGameid,orderUserid);
     }
 }

@@ -2,14 +2,14 @@ package com.joker.dao;
 
 import com.joker.entity.Order;
 import com.joker.entity.OrderAndUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-@Repository
-public interface OrderDao {
+@Mapper
+public interface OrderMapper {
 
     ArrayList<OrderAndUser> showOrderPro(@Param("orderUserid") Integer orderUserid);
 

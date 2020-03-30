@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.joker.dao.UserDao">
+<mapper namespace="com.joker.dao.UserMapper">
     <update id="updateUserPro">
         update userinfo set userinfo_img = #{userinfoImg},userinfo_name = #{userinfoName},userinfo_sex = #{userinfoSex},
         userinfo_birthday = #{userinfoBirthday} where userinfo_id = #{userinfoId}

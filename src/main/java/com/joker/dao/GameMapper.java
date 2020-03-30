@@ -4,14 +4,14 @@ import com.joker.entity.Game;
 import com.joker.entity.GameSale;
 import com.joker.entity.Order;
 import com.joker.entity.Sort;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-@Repository
-public interface GameDao {
+@Mapper
+public interface GameMapper {
     ArrayList<Game> showGamePro();
 
     int insertGamePro(@Param("gameName") String gameName,

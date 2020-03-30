@@ -1,7 +1,7 @@
 package com.joker.service.impl;
 
-import com.joker.dao.GameDao;
-import com.joker.dao.OrderDao;
+import com.joker.dao.GameMapper;
+import com.joker.dao.OrderMapper;
 import com.joker.entity.Game;
 import com.joker.entity.GameSale;
 import com.joker.entity.Order;
@@ -19,14 +19,14 @@ import java.util.Date;
 public class GameServiceImpl implements GameService {
 
     @Autowired
-    private GameDao gameDao;
+    private GameMapper gameMapper;
 
     @Autowired
-    private OrderDao orderDao;
+    private OrderMapper orderMapper;
 
     @Override
     public ArrayList<Game> showGame() {
-        return gameDao.showGamePro();
+        return gameMapper.showGamePro();
     }
 
     @Override
@@ -36,16 +36,16 @@ public class GameServiceImpl implements GameService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("游戏创建时间：" + dateFormat.format(date));
         String gameTime =  dateFormat.format(date);
-        gameDao.addSortcount(gameCharacter);
-        return gameDao.insertGamePro(gameName,gamePrice,gameDescription,gameDiscount,
+        gameMapper.addSortcount(gameCharacter);
+        return gameMapper.insertGamePro(gameName,gamePrice,gameDescription,gameDiscount,
                 gamePromotion,gameCharacter,gameImg,gameDown,gameSale,gameTime);
     }
 
     @Override
     public int deleteGame(Integer gameId) {
-        Game g = gameDao.showIdgamePro(gameId);
-        gameDao.updateSort(g.getGameCharacter());
-        return gameDao.deleteGamePro(gameId);
+        Game g = gameMapper.showIdgamePro(gameId);
+        gameMapper.updateSort(g.getGameCharacter());
+        return gameMapper.deleteGamePro(gameId);
     }
 
     @Override
@@ -53,77 +53,77 @@ public class GameServiceImpl implements GameService {
                           BigDecimal gameDiscount, Boolean gamePromotion, String gameCharacter,
                           String gameImg, Integer gameId, String gameDown) {
         BigDecimal price = gamePrice.multiply(gameDiscount);
-        ArrayList<Order> o = gameDao.selOrder(gameId);
-        Game g = gameDao.showOneGamePro(gameName);
+        ArrayList<Order> o = gameMapper.selOrder(gameId);
+        Game g = gameMapper.showOneGamePro(gameName);
         String dec = g.getGameCharacter();
         if(dec != gameCharacter){
-            gameDao.updateSortOnePro(dec);
-            gameDao.updateSortTwoPro(gameCharacter);
+            gameMapper.updateSortOnePro(dec);
+            gameMapper.updateSortTwoPro(gameCharacter);
         }
-        gameDao.updateCartmsg(gameName,price,gameImg,gameId);
-        gameDao.updateCollectmsg(gameName,price,gameImg,gameId);
+        gameMapper.updateCartmsg(gameName,price,gameImg,gameId);
+        gameMapper.updateCollectmsg(gameName,price,gameImg,gameId);
         if(o != null) {
-            orderDao.updateName(gameId,gameName);
+            orderMapper.updateName(gameId,gameName);
         }
-        return gameDao.updateGamePro(gameName,gamePrice,gameDescription,gameDiscount,
+        return gameMapper.updateGamePro(gameName,gamePrice,gameDescription,gameDiscount,
                 gamePromotion,gameCharacter,gameImg,gameId,gameDown);
     }
 
     @Override
     public ArrayList<Game> showLike(String gameName) {
-        return gameDao.showLikePro(gameName);
+        return gameMapper.showLikePro(gameName);
     }
 
     @Override
     public ArrayList<Sort> getSort() {
-        ArrayList<Sort> getsort = gameDao.getSortPro();
+        ArrayList<Sort> getsort = gameMapper.getSortPro();
         return getsort;
     }
 
     @Override
     public ArrayList<GameSale> getSale() {
-        ArrayList<GameSale> getsale = gameDao.getSalePro();
+        ArrayList<GameSale> getsale = gameMapper.getSalePro();
         return getsale;
     }
 
     @Override
     public Game showOneGame(String gameName) {
-        return gameDao.showOneGamePro(gameName);
+        return gameMapper.showOneGamePro(gameName);
     }
 
     @Override
     public Game showIdgame(Integer gameId) {
-        return gameDao.showIdgamePro(gameId);
+        return gameMapper.showIdgamePro(gameId);
     }
 
     @Override
     public ArrayList<Game> showBlock() {
-        return gameDao.showBlockPro();
+        return gameMapper.showBlockPro();
     }
 
     @Override
     public ArrayList<Game> showSale() {
-        return gameDao.showSalePro();
+        return gameMapper.showSalePro();
     }
 
     @Override
     public ArrayList<Game> showNewgame() {
-        return gameDao.showNewgamePro();
+        return gameMapper.showNewgamePro();
     }
 
     @Override
     public ArrayList<Game> showSortgame(String gameCharacter) {
-        return gameDao.showSortgamePro(gameCharacter);
+        return gameMapper.showSortgamePro(gameCharacter);
     }
 
     @Override
     public Game duplicate(String gameName) {
-        return gameDao.duplicatePro(gameName);
+        return gameMapper.duplicatePro(gameName);
     }
 
     @Override
     public void updateSale(Integer gameId) {
-        gameDao.updateSale(gameId);
+        gameMapper.updateSale(gameId);
     }
 
 }

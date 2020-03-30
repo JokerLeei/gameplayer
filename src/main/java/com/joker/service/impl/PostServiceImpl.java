@@ -1,6 +1,6 @@
 package com.joker.service.impl;
 
-import com.joker.dao.PostDao;
+import com.joker.dao.PostMapper;
 import com.joker.entity.CommentAndUser;
 import com.joker.entity.Post;
 import com.joker.entity.PostAndUser;
@@ -16,11 +16,11 @@ import java.util.Date;
 public class PostServiceImpl implements PostService {
 
     @Autowired
-    private PostDao postDao;
+    private PostMapper postMapper;
 
     @Override
     public ArrayList<Post> showAllpost() {
-        return postDao.showAllpostPro();
+        return postMapper.showAllpostPro();
     }
 
     @Override
@@ -30,42 +30,42 @@ public class PostServiceImpl implements PostService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("用户创建时间：" + dateFormat.format(date));
         String postTime =  dateFormat.format(date);
-        return postDao.insertPostPro(postTitle,postContent,postTime,postThumbs,postUserid,postUsername,postCommons);
+        return postMapper.insertPostPro(postTitle,postContent,postTime,postThumbs,postUserid,postUsername,postCommons);
     }
 
     @Override
     public int deletePost(Integer postId) {
-        return postDao.deletePostPro(postId);
+        return postMapper.deletePostPro(postId);
     }
 
     @Override
     public ArrayList<Post> showPost(Integer postUserid) {
-        return postDao.showPostPro(postUserid);
+        return postMapper.showPostPro(postUserid);
     }
 
     @Override
     public ArrayList<PostAndUser> showNowpost() {
-        return postDao.showNowpostPro();
+        return postMapper.showNowpostPro();
     }
 
     @Override
     public ArrayList<PostAndUser> showHotpost() {
-        return postDao.showHotpostPro();
+        return postMapper.showHotpostPro();
     }
 
     @Override
     public PostAndUser showPostdetail(Integer postId) {
-        return postDao.showPostdetailPro(postId);
+        return postMapper.showPostdetailPro(postId);
     }
 
     @Override
     public ArrayList<CommentAndUser> showPostcommon(Integer commentPostid) {
-        return postDao.showPostcommonPro(commentPostid);
+        return postMapper.showPostcommonPro(commentPostid);
     }
 
     @Override
     public ArrayList<Post> showLike(String postTitle) {
-        return postDao.showLikePro(postTitle);
+        return postMapper.showLikePro(postTitle);
     }
 
 

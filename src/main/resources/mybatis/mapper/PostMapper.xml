@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.joker.dao.PostDao">
+<mapper namespace="com.joker.dao.PostMapper">
     <insert id="insertPostPro">
         insert into post (post_title, post_content,post_time, post_thumbs,post_userid, post_username,
         post_commons) values(#{postTitle},#{postContent},#{postTime},#{postThumbs},#{postUserid},

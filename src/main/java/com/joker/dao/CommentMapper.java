@@ -1,13 +1,13 @@
 package com.joker.dao;
 
 import com.joker.entity.Comment;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-@Repository
-public interface CommentDao {
+@Mapper
+public interface CommentMapper {
     ArrayList<Comment> showAllcommentPro();
 
     int deleteCommentPro(@Param("commentId") Integer commentId);

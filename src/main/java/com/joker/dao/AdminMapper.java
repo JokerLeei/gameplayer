@@ -1,11 +1,11 @@
 package com.joker.dao;
 
 import com.joker.entity.Admin;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface AdminDao {
+@Mapper
+public interface AdminMapper {
 
     Admin loginPro(@Param("adminName") String adminName, @Param("adminPwd") String adminPwd);
 

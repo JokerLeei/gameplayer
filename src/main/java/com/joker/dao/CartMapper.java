@@ -1,14 +1,14 @@
 package com.joker.dao;
 
 import com.joker.entity.Cart;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-@Repository
-public interface CartDao {
+@Mapper
+public interface CartMapper {
     ArrayList<Cart> showCartPro(@Param("cartUserid") Integer cartUserid);
 
     int insertCartPro(@Param("cartName") String cartName,

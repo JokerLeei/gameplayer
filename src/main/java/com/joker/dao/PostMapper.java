@@ -3,13 +3,13 @@ package com.joker.dao;
 import com.joker.entity.CommentAndUser;
 import com.joker.entity.Post;
 import com.joker.entity.PostAndUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 
-@Repository
-public interface PostDao {
+@Mapper
+public interface PostMapper {
     ArrayList<Post> showAllpostPro();
 
     int insertPostPro(@Param("postTitle") String postTitle,

@@ -9,14 +9,15 @@ public class FrameSpringBeanUtil implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-    this.applicationContext = applicationContext; }
+        this.applicationContext = applicationContext;
+    }
 
     @SuppressWarnings("unchecked")
-    public static <T> T getBean(String name){
+    public static <T> T getBean(String name) {
         return (T) applicationContext.getBean(name);
     }
 
-    public static <T> T getBean(Class<T> cls){
+    public static <T> T getBean(Class<T> cls) {
         return applicationContext.getBean(cls);
     }
 }
