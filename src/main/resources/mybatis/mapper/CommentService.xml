@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjf.dao.CommentDao">
+<mapper namespace="com.joker.dao.CommentDao">
     <delete id="deleteCommentPro">
         delete from comment where comment_id = #{commentId}
     </delete>
 
-    <select id="showAllcommentPro" resultType="com.hjf.entity.Comment">
+    <select id="showAllcommentPro" resultType="com.joker.entity.Comment">
         select * from  comment
     </select>
 
-    <select id="showCommentPro" resultType="com.hjf.entity.Comment">
+    <select id="showCommentPro" resultType="com.joker.entity.Comment">
         select * from  comment where  comment_userid = #{commentUserid}
     </select>
 
@@ -24,11 +24,11 @@
         update post set post_commons = post_commons + 1 where post_id = #{commentPostid}
     </update>
 
-    <select id="getPost" resultType="com.hjf.entity.Comment">
+    <select id="getPost" resultType="com.joker.entity.Comment">
         select comment_postid from  comment where comment_id = #{commentId}
     </select>
 
-    <select id="showLikePro" resultType="com.hjf.entity.Comment">
+    <select id="showLikePro" resultType="com.joker.entity.Comment">
         select * from comment where comment_postname like '%${commentPostname}%'
     </select>
 

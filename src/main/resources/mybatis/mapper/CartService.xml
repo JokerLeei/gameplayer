@@ -2,13 +2,13 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjf.dao.CartDao">
+<mapper namespace="com.joker.dao.CartDao">
 
     <delete id="deleteCartPro">
         delete from cart where cart_id = #{cartId} and cart_userid = #{cartUserid}
     </delete>
 
-    <select id="showCartPro" resultType="com.hjf.entity.Cart">
+    <select id="showCartPro" resultType="com.joker.entity.Cart">
         select * from cart where cart_userid = #{cartUserid}
     </select>
 
@@ -18,7 +18,7 @@
         (#{cartName},#{cartImg},#{cartPrice},#{cartUserid},#{cartGameid});
     </insert>
 
-    <select id="buyBolPro" resultType="com.hjf.entity.Cart">
+    <select id="buyBolPro" resultType="com.joker.entity.Cart">
         select * from cart where cart_gameid = #{cartGameid} and cart_Userid = #{cartUserid}
     </select>
 
@@ -26,7 +26,7 @@
         delete from cart where cart_gameid = #{cartGameid} and cart_userid = #{cartUserid}
     </delete>
 
-    <select id="showCartToPro" resultType="com.hjf.entity.Cart">
+    <select id="showCartToPro" resultType="com.joker.entity.Cart">
         select * from cart where cart_gameid = #{cartGameid} and cart_userid = #{cartUserid}
     </select>
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjf.dao.UserDao">
+<mapper namespace="com.joker.dao.UserDao">
     <update id="updateUserPro">
         update userinfo set userinfo_img = #{userinfoImg},userinfo_name = #{userinfoName},userinfo_sex = #{userinfoSex},
         userinfo_birthday = #{userinfoBirthday} where userinfo_id = #{userinfoId}
@@ -24,7 +24,7 @@
         delete from userinfo where userinfo_id = #{userinfoId}
     </delete>
 
-    <select id="loginPro" resultType="com.hjf.entity.Userinfo">
+    <select id="loginPro" resultType="com.joker.entity.Userinfo">
         select * from userinfo where (userinfo_name = #{userinfoName} or userinfo_phone = #{userinfoName}
         or userinfo_email = #{userinfoName}) and userinfo_pwd = #{userinfoPwd}
     </select>
@@ -33,11 +33,11 @@
         insert into userinfo (userinfo_name, userinfo_pwd,userinfo_createtime) values (#{userinfoName},#{userinfoPwd},#{userinfoCreatetime})
     </insert>
 
-    <select id="showUserPro" resultType="com.hjf.entity.Userinfo">
+    <select id="showUserPro" resultType="com.joker.entity.Userinfo">
         select * from userinfo where userinfo_id = #{userinfoId}
     </select>
 
-    <select id="showAlluserPro" resultType="com.hjf.entity.Userinfo">
+    <select id="showAlluserPro" resultType="com.joker.entity.Userinfo">
         select * from userinfo
     </select>
 
@@ -66,19 +66,19 @@
         from userinfo
     </select>
 
-    <select id="duplicatePro" resultType="com.hjf.entity.Userinfo">
+    <select id="duplicatePro" resultType="com.joker.entity.Userinfo">
         select userinfo_name from userinfo where userinfo_name = #{userinfoName}
     </select>
 
-    <select id="getUserIdPro" resultType="com.hjf.entity.Userinfo">
+    <select id="getUserIdPro" resultType="com.joker.entity.Userinfo">
         select userinfo_id from userinfo where userinfo_name = #{userinfoName}
     </select>
 
-    <select id="getUserPro" resultType="com.hjf.entity.Userinfo">
+    <select id="getUserPro" resultType="com.joker.entity.Userinfo">
         select * from userinfo where userinfo_name = #{userinfoName}
     </select>
 
-    <select id="showLikePro" resultType="com.hjf.entity.Userinfo">
+    <select id="showLikePro" resultType="com.joker.entity.Userinfo">
         select * from userinfo where userinfo_name like '%${userinfoName}%'
     </select>
 

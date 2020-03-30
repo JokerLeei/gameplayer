@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjf.dao.GameDao">
+<mapper namespace="com.joker.dao.GameDao">
 
-    <select id="showGamePro" resultType="com.hjf.entity.Game">
+    <select id="showGamePro" resultType="com.joker.entity.Game">
         select * from game
     </select>
 
@@ -25,50 +25,50 @@
         game_img = #{gameImg}, game_down = #{gameDown} where game_id = #{gameId}
     </update>
 
-    <select id="showLikePro" resultType="com.hjf.entity.Game">
+    <select id="showLikePro" resultType="com.joker.entity.Game">
         select * from game where game_name like '%${gameName}%'
     </select>
 
-    <select id="getSortPro" resultType="com.hjf.entity.Sort">
+    <select id="getSortPro" resultType="com.joker.entity.Sort">
         select * from sort
     </select>
 
-    <select id="getSalePro" resultType="com.hjf.entity.GameSale">
+    <select id="getSalePro" resultType="com.joker.entity.GameSale">
         select game_id,game_img,game_name , game_sale from game order by game_sale desc , game_name asc limit 0,10
     </select>
 
-    <select id="showOneGamePro" resultType="com.hjf.entity.Game">
+    <select id="showOneGamePro" resultType="com.joker.entity.Game">
         select * from game where game_name = #{gameName}
     </select>
 
-    <select id="showIdgamePro" resultType="com.hjf.entity.Game">
+    <select id="showIdgamePro" resultType="com.joker.entity.Game">
         select * from game where game_id = #{gameId}
     </select>
 
-    <select id="showBlockPro" resultType="com.hjf.entity.Game">
+    <select id="showBlockPro" resultType="com.joker.entity.Game">
         select game_id,game_img,game_name,game_discount,game_price from game  where game_promotion = '1'
         order by game_discount asc, game_time asc limit 0,5
     </select>
 
-    <select id="showSalePro" resultType="com.hjf.entity.Game">
+    <select id="showSalePro" resultType="com.joker.entity.Game">
         select game_id,game_img,game_name,game_character,game_discount,game_price from game  where game_promotion = '1'
         order by game_time desc , game_discount asc limit 0,10
     </select>
 
-    <select id="showNewgamePro" resultType="com.hjf.entity.Game">
+    <select id="showNewgamePro" resultType="com.joker.entity.Game">
         select game_id,game_img,game_name,game_character,game_discount,game_price,game_promotion from game
         order by game_time desc , game_name asc limit 0,10
     </select>
 
-    <select id="showSortgamePro" resultType="com.hjf.entity.Game">
+    <select id="showSortgamePro" resultType="com.joker.entity.Game">
          select * from game where game_character = #{gameCharacter}
     </select>
 
-    <select id="duplicatePro" resultType="com.hjf.entity.Game">
+    <select id="duplicatePro" resultType="com.joker.entity.Game">
         select game_name from game where game_name = #{gameName}
     </select>
 
-    <select id="selOrder" resultType="com.hjf.entity.Order">
+    <select id="selOrder" resultType="com.joker.entity.Order">
         select * from `order` where order_gameid = #{gameId}
     </select>
 

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hjf.dao.OrderDao">
+<mapper namespace="com.joker.dao.OrderDao">
 
     <insert id="insertOrderPro">
         insert into `order` (order_name, order_price, order_time, order_userid, order_gameid, order_status)
@@ -13,21 +13,21 @@
         delete from `order` where order_id = #{orderId}
     </delete>
 
-    <select id="showOrderPro" resultType="com.hjf.entity.OrderAndUser">
+    <select id="showOrderPro" resultType="com.joker.entity.OrderAndUser">
         select order_id,order_name,order_time,order_price,game_img from `order` join game on `order`.order_gameid = game.game_id
         where order_userid = #{orderUserid} and order_status = '1' order by order_time desc
     </select>
 
-    <select id="orderNorepeatPro" resultType="com.hjf.entity.OrderAndUser">
+    <select id="orderNorepeatPro" resultType="com.joker.entity.OrderAndUser">
         select order_name, order_gameid, game_img from `order` join game on `order`.order_gameid = game.game_id
         where order_userid = #{orderUserid} and order_status = '1' group by order_name
     </select>
 
-    <select id="showAllorderPro" resultType="com.hjf.entity.Order">
+    <select id="showAllorderPro" resultType="com.joker.entity.Order">
         select * from `order`
     </select>
 
-    <select id="showLikePro" resultType="com.hjf.entity.Order">
+    <select id="showLikePro" resultType="com.joker.entity.Order">
         select * from `order` where order_name like '%${orderName}%'
     </select>
 
@@ -44,7 +44,7 @@
         delete from `order` where order_gameid = #{gameId} and order_userid = #{userId}
     </delete>
 
-    <select id="showBuyStatusPro" resultType="com.hjf.entity.Order">
+    <select id="showBuyStatusPro" resultType="com.joker.entity.Order">
         select * from `order` where order_gameid = #{orderGameid} and order_userid = #{orderUserid}
         and order_status = '1'
     </select>
