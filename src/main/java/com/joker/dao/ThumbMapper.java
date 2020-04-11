@@ -1,11 +1,11 @@
 package com.joker.dao;
 
 import com.joker.entity.PUthumb;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface ThumbDao {
+@Mapper
+public interface ThumbMapper {
 
     PUthumb puThumbolPro(@Param("puthumbPostid") Integer puthumbPostid,
                        @Param("puthumbUserid") Integer puthumbUserid);

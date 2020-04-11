@@ -1,6 +1,6 @@
 package com.joker.service.impl;
 
-import com.joker.dao.UserDao;
+import com.joker.dao.UserMapper;
 import com.joker.entity.Userinfo;
 import com.joker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import java.util.Map;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserDao userDao;
+    private UserMapper userMapper;
 
     @Override
     public Userinfo login(String userinfoName, String userinfoPwd) {
-        return userDao.loginPro(userinfoName,userinfoPwd);
+        return userMapper.loginPro(userinfoName,userinfoPwd);
     }
 
     @Override
@@ -28,31 +28,31 @@ public class UserServiceImpl implements UserService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("用户创建时间：" + dateFormat.format(date));
         String userinfoCreatetime =  dateFormat.format(date);
-        return userDao.registerPro(userinfoName,userinfoPwd,userinfoCreatetime);
+        return userMapper.registerPro(userinfoName,userinfoPwd,userinfoCreatetime);
     }
 
     @Override
     public int updateUser(String userinfoImg,String userinfoName, String userinfoSex, Date userinfoBirthday, Integer userinfoId) {
 
-        userDao.updateSendname(userinfoName,userinfoId);
-        userDao.updateAcceptname(userinfoName,userinfoId);
-        userDao.updatePsotname(userinfoName,userinfoId);
-        return userDao.updateUserPro(userinfoImg,userinfoName,userinfoSex,userinfoBirthday,userinfoId);
+        userMapper.updateSendname(userinfoName,userinfoId);
+        userMapper.updateAcceptname(userinfoName,userinfoId);
+        userMapper.updatePsotname(userinfoName,userinfoId);
+        return userMapper.updateUserPro(userinfoImg,userinfoName,userinfoSex,userinfoBirthday,userinfoId);
     }
 
     @Override
     public Userinfo showUser(Integer userinfoId) {
-        return userDao.showUserPro(userinfoId);
+        return userMapper.showUserPro(userinfoId);
     }
 
     @Override
     public int updatePwd(String userinfoPwd, Integer userinfoId) {
-        return userDao.updatePwdPro(userinfoPwd,userinfoId);
+        return userMapper.updatePwdPro(userinfoPwd,userinfoId);
     }
 
     @Override
     public ArrayList<Userinfo> showAllUser() {
-        return userDao.showAlluserPro();
+        return userMapper.showAlluserPro();
     }
 
     @Override
@@ -62,54 +62,54 @@ public class UserServiceImpl implements UserService {
         SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         System.out.println("用户创建时间：" + dateFormat.format(date));
         String userinfoCreatetime =  dateFormat.format(date);
-        return userDao.insertUserPro(userinfoName,userinfoPwd,userinfoEmail,userinfoPhone,userinfoSex,
+        return userMapper.insertUserPro(userinfoName,userinfoPwd,userinfoEmail,userinfoPhone,userinfoSex,
                 userinfoBirthday,userinfoCreatetime,userinfoImg);
     }
 
     @Override
     public int deleteUser(Integer userinfoId) {
-        return userDao.deleteUserPro(userinfoId);
+        return userMapper.deleteUserPro(userinfoId);
     }
 
     @Override
     public Map getSex() {
-        Map getsex = userDao.getSexPro();
+        Map getsex = userMapper.getSexPro();
         return getsex;
     }
 
     @Override
     public Map getAge() {
-        Map getAge = userDao.getAgePro();
+        Map getAge = userMapper.getAgePro();
         return getAge;
     }
 
     @Override
     public Userinfo duplicate(String userinfoName) {
-        return userDao.duplicatePro(userinfoName);
+        return userMapper.duplicatePro(userinfoName);
     }
 
     @Override
     public Userinfo getUserId(String userinfoName) {
-        return userDao.getUserIdPro(userinfoName);
+        return userMapper.getUserIdPro(userinfoName);
     }
 
     @Override
     public int updateEmail(String userinfoEmail, Integer userinfoId) {
-        return userDao.updateEmailPro(userinfoEmail,userinfoId);
+        return userMapper.updateEmailPro(userinfoEmail,userinfoId);
     }
 
     @Override
     public int updatePhone(String userinfoPhone, Integer userinfoId) {
-        return userDao.updatePhonePro(userinfoPhone,userinfoId);
+        return userMapper.updatePhonePro(userinfoPhone,userinfoId);
     }
 
     @Override
     public Userinfo getUser(String userinfoName) {
-        return userDao.getUserPro(userinfoName);
+        return userMapper.getUserPro(userinfoName);
     }
 
     @Override
     public ArrayList<Userinfo> showLike(String userinfoName) {
-        return userDao.showLikePro(userinfoName);
+        return userMapper.showLikePro(userinfoName);
     }
 }

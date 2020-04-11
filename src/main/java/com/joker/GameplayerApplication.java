@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 // mapper 接口类扫描包配置
-@MapperScan("com.hjf.dao")
+@MapperScan("com.joker.dao")
 //@EnableScheduling
 public class GameplayerApplication {
 

@@ -1,16 +1,15 @@
 package com.joker.dao;
 
 import com.joker.entity.Userinfo;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Map;
 
-
-@Repository
-public interface UserDao {
+@Mapper
+public interface UserMapper {
 
     Userinfo loginPro(@Param("userinfoName") String userinfoName,
                       @Param("userinfoPwd") String userinfoPwd);

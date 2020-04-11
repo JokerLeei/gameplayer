@@ -80,6 +80,6 @@ public interface GameMapper {
      */
     void updateSortOnePro(@Param("dec") String dec);
 
-    void updateSortTwoPro(@Param("gameId") String gameCharacter);
+    void updateSortTwoPro(@Param("gameCharacter") String gameCharacter);
 
 }

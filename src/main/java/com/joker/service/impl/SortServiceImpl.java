@@ -1,6 +1,6 @@
 package com.joker.service.impl;
 
-import com.joker.dao.SortDao;
+import com.joker.dao.SortMapper;
 import com.joker.entity.Sort;
 import com.joker.service.SortService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,20 +12,20 @@ import java.util.ArrayList;
 public class SortServiceImpl implements SortService {
 
     @Autowired
-    private SortDao sortDao;
+    private SortMapper sortMapper;
 
     @Override
     public ArrayList<Sort> showSort() {
-        return sortDao.showSortPro();
+        return sortMapper.showSortPro();
     }
 
     @Override
     public int insertSort(String sortName,Integer sortCount) {
-        return sortDao.insertSortPro(sortName,sortCount);
+        return sortMapper.insertSortPro(sortName,sortCount);
     }
 
     @Override
     public int deleteSort(Integer sortId) {
-        return sortDao.deleteSort(sortId);
+        return sortMapper.deleteSort(sortId);
     }
 }
